@@ -1,0 +1,82 @@
+We nedd to start a project
+
+    - npm init
+
+Estandar recomendado para la importacion de modulos:
+    const fs = requiere('node:fs')
+
+
+Instalar express:
+    npm install express --save
+
+Instalar ESLINT:
+    npm install eslint --save-dev
+    or
+    npm init @eslint/config
+
+Instalacion de dependencias:
+    Dev:
+    - 
+    producction:
+
+Generacion de modelos con
+    - npm install -g sequelize-cli (Recomiendo instalacion global)
+    - npm install mysql2 (agregar al excel)
+    - sequelize init
+
+    Generar modelo:
+        npx sequelize-cli model:generate --name BmtAccounts --attributes nickName:string,email:string,birthdate:date,password:text
+
+    Models Migrate:
+        npx sequelize-cli migration:generate --name BmtAccount.js //--> ( Generate TABLE SPECIFIC )
+        
+        npx sequelize-cli db:migrate:status
+
+        npx sequelize-cli db:migrate //--> ( SENT DB ALL TABLE )
+
+Modulos:
+    CommonJs Para versiones menores de 13 node
+        // Importar en CommonJS
+            const modulo = require('./modulo');
+        // Exportar en CommonJS
+            module.exports = { algo: 'algo' };
+
+    ESM utiliza
+        // Importar en ESM
+            import modulo from './modulo';
+        // Exportar en ESM
+            export const algo = 'algo';
+
+
+Bibliografia:
+
+    https://github.com/CarlosCalderon01/MyAppLB
+
+    https://expressjs.com/es/
+
+    https://eslint.org/docs/latest/use/getting-started
+
+// ----- // ----- // ----- // ----- // ----- // ----- //
+
+HTTP
+
+Request --> Peticion
+Response --> Respuesta
+
+// ----- // ----- // ----- // ----- // ----- // ----- //
+
+list de dependencias
+
+npm install express // (install framework)
+npm install sequelize // (install ORM)
+npm install pg // (install Controller)
+
+
+que debo de hacer ahora?
+- ya instale las dependencias.
+- ya configure el sequelize.
+- ya extrage el modelo.
+
+( HOW TO CREATE A TABLE )
+npx sequelize-cli model:generate --name movie --attributes name:string,description:string
+
