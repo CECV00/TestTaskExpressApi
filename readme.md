@@ -56,8 +56,3 @@
 # Manual
 
 # BiBliografia
-
-- https://github.com/CarlosCalderon01/TalkingWithMeAPI
-
-
-

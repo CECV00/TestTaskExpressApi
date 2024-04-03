@@ -1,54 +1,40 @@
 const express = require('express')
 const app = express()
-const sequelize = require('../src/config/dbConfig.js')
-const bmtAccountRoutes = require('./views/BmtAccount')
+const bodyParser = require('body-parser')
+const sequelize = require('./config/dbConfig')
 
-// const dbCheking = require('../src/config/checkingDataBase.js')
+const v1Router = require('./v1/routers/index.js')
 
-function testSynchronizing () {
-  sequelize.sync()
-    .then(() => {
-      console.log('Synchronizing model with the database')
-    })
-    .catch((error) => {
-      console.error('Model synchronization error', error)
-    })
-}
+const PORT = process.env.PORT || 3000
+
+app.use(bodyParser.json())
 
 async function testAuthenticate () {
   try {
     await sequelize.authenticate()
-    console.log('All Good!')
+    console.log('Conexión exitosa a la base de datos!')
   } catch (err) {
-    console.error('All Bad!', err)
+    console.error('Error al conectar a la base de datos:', err)
   }
 }
-
-// Middleware para permitir que Express procese JSON
-app.use(express.json())
-
-const PORT = process.env.PORT || 3000
-
-// For testing purposes
-app.get('/', (req, res) => {
-  res.send('Page Home!')
-})
-
-// Utiliza las rutas de BmtAccount
-app.use('/accounts', bmtAccountRoutes)
-
-// dbCheking.testAuthenticate()
-// testSynchronizing()
 testAuthenticate()
 
-app.listen(PORT, console.log(`Server Start in http://localhost:${PORT}`))
+app.use('/api/v1/', v1Router)
 
-// app.listen(PORT, () => {
-//   console.log(`API is listening on port ${PORT}`)
-// })
+// link for test: http://localhost:3000/
+app.get('/', (req, res) => {
+  res.send('¡Bienvenido a la página de inicio!')
+})
+
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado en http://localhost:${PORT}`)
+})
 
 /*
-  - un middleware es un software que actúa como un intermediario entre dos aplicaciones, sistemas o componentes de software.
-  - En el caso de Express.js, los middlewares son funciones que se ejecutan en el medio (middleware) del ciclo de solicitud y respuesta.
-  - un middlewaves siempre tiene un next()
+  Apuntes:
+
+  - Notas:
+
+  const viewsBmtAccounts = require('./views/viwesBmtAccount')
+
 */

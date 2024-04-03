@@ -22,7 +22,7 @@ Instalacion de dependencias:
 Generacion de modelos con
     - npm install -g sequelize-cli (Recomiendo instalacion global)
     - npm install mysql2 (agregar al excel)
-    - sequelize init
+    - npx sequelize init
 
     Generar modelo:
         npx sequelize-cli model:generate --name BmtAccounts --attributes nickName:string,email:string,birthdate:date,password:text
