@@ -1,16 +1,14 @@
-// index.js
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const sequelize = require('./config/dbConfig')
-const viewsBmtAccounts = require('./views/viwesBmtAccount')
+
+const v1Router = require('./v1/routers/index.js')
 
 const PORT = process.env.PORT || 3000
 
-// Middlewares
 app.use(bodyParser.json())
 
-// Conexión a la base de datos
 async function testAuthenticate () {
   try {
     await sequelize.authenticate()
@@ -21,15 +19,13 @@ async function testAuthenticate () {
 }
 testAuthenticate()
 
-// Rutas
-app.use('/accounts', viewsBmtAccounts)
+app.use('/api/v1/', v1Router)
 
-// Página de inicio
+// link for test: http://localhost:3000/
 app.get('/', (req, res) => {
   res.send('¡Bienvenido a la página de inicio!')
 })
 
-// Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`)
 })
@@ -38,5 +34,7 @@ app.listen(PORT, () => {
   Apuntes:
 
   - Notas:
+
+  const viewsBmtAccounts = require('./views/viwesBmtAccount')
 
 */
