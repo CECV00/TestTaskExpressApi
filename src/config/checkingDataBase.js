@@ -1,6 +1,6 @@
 const sequelize = require('../config/dbConfig.cjs')
 
-function testSynchronizing () {
+async function testSynchronizing () {
   sequelize.sync()
     .then(() => {
       console.log('Synchronizing model with the database')
