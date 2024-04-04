@@ -26,6 +26,8 @@ Generacion de modelos con
 
     Generar modelo:
         npx sequelize-cli model:generate --name BmtAccounts --attributes nickName:string,email:string,birthdate:date,password:text
+        npx sequelize-cli model:generate --name GmtAdmins --attributes nickName:string,email:string,password:text
+
 
     Models Migrate:
         npx sequelize-cli migration:generate --name BmtAccount.js //--> ( Generate TABLE SPECIFIC )
